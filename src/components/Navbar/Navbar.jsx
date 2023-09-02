@@ -24,6 +24,9 @@ const Navbar = () => {
             <li>
               <Link to="/ongoing" className="px-2 py-2">On Going Anime</Link> {/* Ganti dengan Link */}
             </li>
+            <li>
+              <Link to="/genres" className="px-2 py-2">Genre</Link> {/* Ganti dengan Link */}
+            </li>
           </ul>
           {/* icon */}
           <BiHelpCircle />

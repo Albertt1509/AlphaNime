@@ -4,6 +4,7 @@ import Home from './pages/Home';
 import AnimeList from './pages/AnimeList'
 import JadwalRilis from './pages/JadwalRilis'
 import Ongoing from './pages/Ongoing'
+import Genres from './pages/Genres';
 import './App.css'
 function App() {
   const [count, setCount] = useState(true)
@@ -16,6 +17,7 @@ function App() {
         <Route path='/anime-list' element={<AnimeList/>} />
         <Route path='/jadwal-rilis' element={<JadwalRilis/>} />
         <Route path='/ongoing' element={<Ongoing/>} />
+        <Route path='/genres' element={<Genres/>} />
       </Routes>
     </Router>
     </>
