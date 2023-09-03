@@ -25,7 +25,7 @@ const Genres = () => {
     <div>
       <Navbar />
       <div className="container mx-auto p-4">
-        <h2 className="text-2xl font-bold mb-4">Genres</h2>
+        <h2 className="text-2xl font-bold mb-4">Genre</h2>
         <div className="grid grid-cols-3 gap-4">
           {loading ? (
             <p>Loading...</p>
