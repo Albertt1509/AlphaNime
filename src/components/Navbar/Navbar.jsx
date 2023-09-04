@@ -2,15 +2,14 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import Logo from "../../assets/png/logo.png"
 import '../../App.css'
+import { AiOutlineMenu } from 'react-icons/ai'
+
 const Navbar = () => {
   const [searchKeyword, setSearchKeyword] = useState('');
+  const [menuOpen, setMenuOpen] = useState(false);
 
-  // Fungsi untuk menangani pencarian dan navigasi ke halaman pencarian
   const handleSearch = () => {
-    // Lakukan sesuatu dengan nilai pencarian (searchKeyword) ketika tombol pencarian ditekan.
-    // Contoh: melakukan navigasi ke halaman pencarian dengan nilai pencarian.
     if (searchKeyword) {
-      // Navigasi ke halaman pencarian dengan nilai pencarian
       window.location.href = `/search/${searchKeyword}`;
     }
   };
@@ -19,13 +18,22 @@ const Navbar = () => {
     <div>
       <nav className="bg-white shadow-md">
         <div className="flex items-center justify-between font-medium p-4">
-          <div className=" flex items-center gap-2">
-              <img className='logo' src={Logo} alt="" />
+          <div className="flex items-center gap-2">
+            <img className='logo' src={Logo} alt="" />
           </div>
-          
-          <ul className="md:flex  items-center gap-2 w-full justify-center">
+
+          <div className="md:hidden">
+            <button
+              className="text-gray-600 hover:text-gray-800"
+              onClick={() => setMenuOpen(!menuOpen)}
+            >
+              
+            </button>
+          </div>
+            
+          <ul className="md:flex md:items-center gap-2 w-full justify-center">
             <li>
-              <Link to="/" className="px-2 py-2 ">Home</Link>
+              <Link to="/" className="px-2 py-2">Home</Link>
             </li>
             <li>
               <Link to="/anime-list" className="px-2 py-2">Anime List</Link>
@@ -40,8 +48,16 @@ const Navbar = () => {
               <Link to="/genres" className="px-2 py-2">Genre</Link>
             </li>
           </ul>
-          <ul>
-             <li>
+
+          <div className="md:hidden">
+            <button
+              className="text-gray-600 hover:text-gray-800"
+              onClick={() => setMenuOpen(!menuOpen)}
+            >
+            </button>
+          </div>
+          <ul className="md:flex items-center gap-2">
+            <li>
               <div className="relative">
                 <input
                   type="text"
@@ -51,16 +67,17 @@ const Navbar = () => {
                   onChange={(e) => setSearchKeyword(e.target.value)}
                 />
                 <Link
-                to={`/search/${searchKeyword}`} // Link ke halaman pencarian dengan nilai pencarian
-                className="absolute right-4 top-2/4 transform -translate-y-1/2 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full"
-                style={{ right: '0' }} // Menambahkan properti CSS untuk mengatur posisi tombol
-                onClick={handleSearch}
-              >
-                Cari
-              </Link>
+                  to={`/search/${searchKeyword}`}
+                  className="absolute right-4 top-2/4 transform -translate-y-1/2 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full"
+                  style={{ right: '0' }}
+                  onClick={handleSearch}
+                >
+                  Cari
+                </Link>
               </div>
             </li>
           </ul>
+           
         </div>
       </nav>
     </div>

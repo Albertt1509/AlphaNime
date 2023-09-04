@@ -12,13 +12,21 @@ const Home = () => {
           <p className="pt-3">
             Selamat datang di dunia anime! Kami adalah rumah bagi ribuan episode anime pilihan dengan kualitas tinggi dan bersubtitle Indonesia. Temukan petualangan, emosi, dan cerita seru bersama karakter favorit Anda. Bergabunglah dalam komunitas penggemar anime kami dan nikmati pengalaman streaming terbaik. Selamat menikmati!
           </p>
-          <p className="flex justify-end items-end"> 
-            Dengan cinta,
-            Alpha
-          </p>
+        <p className="flex justify-end items-end"> 
+          Dengan ❤️,
+          Alpha
+        </p>
+
         </div>
         <img className="gambar" src="https://media.tenor.com/-jPecNydkV8AAAAi/yuri-anime.gif" alt="" />
       </div>
+
+        <div className="container flex justify-start p-5">
+          <h1 className='font-bold text-xl '> Update Anime</h1>
+          {/* ongoing anime */}
+            
+        </div>
+
     </>
   )
 };
