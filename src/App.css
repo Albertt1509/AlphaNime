@@ -7,3 +7,21 @@
   padding: 0;
 
 }
+
+.logo{
+  width: 150px;
+  height: 45px;
+
+}
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 1rem;
+  position: relative;
+}
+
+.gambar {
+  grid-column: 6;
+  grid-row: span 1; /* Sesuaikan sesuai kebutuhan Anda */
+  align-self: end;
+}

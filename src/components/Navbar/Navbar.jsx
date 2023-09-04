@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-
+import Logo from "../../assets/png/logo.png"
+import '../../App.css'
 const Navbar = () => {
   const [searchKeyword, setSearchKeyword] = useState('');
 
@@ -18,9 +19,10 @@ const Navbar = () => {
     <div>
       <nav className="bg-white shadow-md">
         <div className="flex items-center justify-between font-medium p-4">
-          <div className="logo flex items-center gap-2">
-            <div className="w-16 h-5 bg-yellow-500"></div>
+          <div className=" flex items-center gap-2">
+              <img className='logo' src={Logo} alt="" />
           </div>
+          
           <ul className="md:flex  items-center gap-2 w-full justify-center">
             <li>
               <Link to="/" className="px-2 py-2 ">Home</Link>
