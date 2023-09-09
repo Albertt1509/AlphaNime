@@ -6,6 +6,7 @@ import JadwalRilis from './pages/JadwalRilis'
 import Ongoing from './pages/Ongoing'
 import Genres from './pages/Genres';
 import Cari from './pages/Cari';
+import AnimeDetail from './pages/AnimeDetail';
 import './App.css'
 function App() {
   const [count, setCount] = useState(true)
@@ -20,6 +21,7 @@ function App() {
         <Route path='/ongoing' element={<Ongoing/>} />
         <Route path='/genres' element={<Genres/>} />
         <Route path='/search/:query' element={<Cari/>} />
+        <Route path='/detail/:endpoint' element={<AnimeDetail/>} />
       </Routes>
     </Router>
     </>

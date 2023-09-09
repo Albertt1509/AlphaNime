@@ -28,7 +28,9 @@ const Navbar = () => {
           </div>
           {/* Menu Mobile */}
           <ul className={`md:hidden bg-white fixed w-full top-0 overflow-y-auto bottom-0 py-24 pl-4 duration-500 z-50 ${menuOpen ? "translate-x-[-1rem]" : "-translate-x-full"}`} style={{ marginLeft: menuOpen ? '0' : '-100%' }}>
+            
             <img className='logo' src={Logo} alt="" />
+
             <li>
               <Link to="/" className="py-7 px-3 inline-block">Home</Link>
             </li>

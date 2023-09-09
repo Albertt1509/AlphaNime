@@ -1,6 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import Navbar from '../components/Navbar/Navbar';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 
 const Ongoing = () => {
   const [ongoingData, setOngoingData] = useState([]);
@@ -55,6 +56,11 @@ const Ongoing = () => {
                 <h2 className="text-xl font-semibold mt-2">{anime.title}</h2>
                 <p className="mt-2">{anime.total_episode}</p>
                 <p className="text-xs mt-2">Updated : {anime.updated_on}, {anime.updated_day}</p>
+                <div className="flex justify-center items-end p-3">
+                  <Link to={`/detail/${anime.endpoint}`}>
+                <button className=' p-2 bg-blue-300 rounded-sm '>Detail</button>
+                 </Link>
+               </div>
               </div>
             ))
           ) : (
