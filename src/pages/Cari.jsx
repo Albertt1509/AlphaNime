@@ -37,10 +37,13 @@ return (
               <h2 className="font-bold text-sm md:text-base h-16 overflow-hidden">
                 {anime.title}
               </h2>
-              <p>Genre:{anime.genres.join(', ')}</p>
+              <div className="p-5">
+               <p>Genre:{anime.genres.join(', ')}</p>
               <p>Rating: {anime.rating}</p>
               <p>Status: {anime.status}</p>
-              
+          
+              </div>
+      
             </div>
           </div>
         ))}
