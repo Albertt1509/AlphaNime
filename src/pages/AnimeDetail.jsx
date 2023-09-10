@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useParams } from 'react-router-dom';
 import Navbar from '../components/Navbar/Navbar';
-import EpisodeList from '../pages/Episode';
+
 const AnimeDetail = () => {
   const [animeDetail, setAnimeDetail] = useState({});
   const { endpoint } = useParams(); // Mengambil endpoint dari URL
@@ -10,7 +10,9 @@ const AnimeDetail = () => {
   useEffect(() => {
     axios.get(`https://otakudesu-anime-api.vercel.app/api/v1/detail/${endpoint}`)
       .then((response) => {
-        setAnimeDetail(response.data.anime_detail); // Simpan data anime ke dalam state
+        const animeData = response.data; // Mengambil seluruh data anime
+        setAnimeDetail(animeData); // Simpan data anime ke dalam state
+        console.log(response.data);
       })
       .catch((error) => {
         console.error('Error:', error);
@@ -21,25 +23,41 @@ const AnimeDetail = () => {
     <div>
       <Navbar />
       <div className="grid grid-cols-2 p-5">
-          <img
-            src={animeDetail.thumb}
-            className="mx-auto  drop-shadow-sm mr-4 p-2"
-          />
+        <img
+          src={animeDetail.anime_detail ? animeDetail.anime_detail.thumb : ''}
+          className="mx-auto drop-shadow-sm mr-4 p-2"
+          alt={animeDetail.anime_detail ? animeDetail.anime_detail.title : ''}
+        />
         <div className="col-span-1 flex flex-col justify-center space-y-2">
-          <h2 className="font-bold text-2xl">{animeDetail.title}</h2>
-          <p> {animeDetail.detail ? animeDetail.detail[1] : 'N/A'}</p>
-          <p> {animeDetail.detail ? animeDetail.detail[2] : 'N/A'}</p>
-          <p> {animeDetail.detail ? animeDetail.detail[3] : 'N/A'}</p>
-          <p> {animeDetail.detail ? animeDetail.detail[5] : 'N/A'}</p>
-          <p> {animeDetail.detail ? animeDetail.detail[6] : 'N/A'}</p>
-          <p> {animeDetail.detail ? animeDetail.detail[7] : 'N/A'}</p>
-          <p> {animeDetail.detail ? animeDetail.detail[8] : 'N/A'}</p>
-          <p> {animeDetail.detail ? animeDetail.detail[9] : 'N/A'}</p>
-          <p> {animeDetail.detail ? animeDetail.detail[10] : 'N/A'}</p>
+          <h2 className="font-bold text-2xl">{animeDetail.anime_detail ? animeDetail.anime_detail.title : 'N/A'}</h2>
+          {/* Menampilkan data anime_detail */}
+          {animeDetail.anime_detail && (
+            animeDetail.anime_detail.detail.map((item, index) => (
+              <p key={index}>{item}</p>
+            ))
+          )}
         </div>
-        <h1>Daftar Episode</h1>
-          {animeDetail.episode_list && <EpisodeList episodes={animeDetail.episode_list} />}
       </div>
+
+  <div className="p-8 text-center">
+  <h2 className="font-bold text-2xl">Episode List</h2>
+  <table className="table-auto mx-auto">
+    <tbody className='bg-blue-200'>
+      {animeDetail.episode_list &&
+        animeDetail.episode_list.map((episode, index) => (
+          <tr key={index}>
+            <td className="border px-4 py-4">
+              <a href={`/episode/${episode.episode_endpoint}`}>
+                {episode.episode_title}
+              </a>
+            </td>
+            <td className="border px-4 py-2">{episode.episode_date}</td>
+          </tr>
+        ))}
+    </tbody>
+  </table>
+</div>
+
     </div>
   );
 };

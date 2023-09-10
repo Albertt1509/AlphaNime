@@ -47,19 +47,18 @@ const Ongoing = () => {
                 className="border p-4 border-black rounded"
               >
                 <div className="relative h-64">
+                  <Link to={`/detail/${anime.endpoint}`}>
                   <img
                     src={anime.thumb}
                     alt={anime.title}
                     className="object-cover w-full h-full rounded"
                   />
+                    </Link>
                 </div>
                 <h2 className="text-xl font-semibold mt-2">{anime.title}</h2>
                 <p className="mt-2">{anime.total_episode}</p>
                 <p className="text-xs mt-2">Updated : {anime.updated_on}, {anime.updated_day}</p>
-                <div className="flex justify-center items-end p-3">
-                  <Link to={`/detail/${anime.endpoint}`}>
-                <button className=' p-2 bg-blue-300 rounded-sm '>Detail</button>
-                 </Link>
+                <div className="flex justify-end items-end p-3">            
                </div>
               </div>
             ))
