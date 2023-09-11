@@ -1,6 +1,8 @@
 import { useState, useEffect } from 'react';
 import Navbar from '../components/Navbar/Navbar';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
+
 
 const AnimeList = () => {
   const [animeListData, setAnimeListData] = useState([]);
@@ -30,9 +32,9 @@ const AnimeList = () => {
                 key={anime.endpoint}
                 className="border p-4 border-black rounded"
               >
-               
+                <Link to={`/alpha/${anime.endpoint}`}>
                 <h2 className="text-xl font-semibold mt-2">{anime.title}</h2>
-                {/* Tambahkan elemen lain sesuai dengan data yang Anda miliki */}
+                </Link>
               </div>
             ))
           ) : (

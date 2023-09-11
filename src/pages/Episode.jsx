@@ -1,60 +1,36 @@
+// Episode.jsx (Komponen untuk menampilkan data episode)
 import { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom'; // Import useParams
+import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import Navbar from '../components/Navbar/Navbar';
 
 const Episode = () => {
-  const [animeEpisode, setAnimeEpisode] = useState({});
-  const { endpoint } = useParams(); // Gunakan useParams untuk mengambil nilai endpoint dari URL
+  const [episodeData, setEpisodeData] = useState({});
+  const { episode_endpoint } = useParams();
 
   useEffect(() => {
-    retrieveEpisode(); // Ganti retriveEpisode menjadi retrieveEpisode
-  }, [endpoint]);
+    axios.get(`https://otakudesu-anime-api.vercel.app/api/v1/episode/${episode_endpoint}`)
+      .then((response) => {
+        const episodeInfo = response.data;
+        setEpisodeData(episodeInfo);
+        console.log(response.data)
+      })
+      .catch((error) => {
+        console.error('Error:', error);
+      });
+  }, [episode_endpoint]);
 
-  const retrieveEpisode = async () => {
-    try {
-      const { data } = await axios.get(`https://otakudesu-anime-api.vercel.app/api/v1/episode/${endpoint}`);
-      setAnimeEpisode(data);
-      //console.log(data);
-    } catch (error) {
-      // Lihat data error di console
-      console.log(`${error} ====> error list`);
-    }
-  };
-
-return (
-  <>
-    {JSON.stringify(animeEpisode)}
+  return (
     <div>
-      <Navbar/>
-      {/* <h1>Detail Episode</h1>
-      <p>Title: {animeEpisode.title}</p>
-      <p>Base URL: {animeEpisode.baseUrl}</p>
-      <p>ID: {animeEpisode.id}</p>
-      <p>Link Stream Response: {animeEpisode.link_stream_response}</p>
-      <h2>Mirror 1</h2>
-      <p>Quality: {animeEpisode.mirror1.quality}</p>
-      <ul>
-        {animeEpisode.mirror1.mirrorList.map((mirror, index) => (
-          <li key={index}>{mirror}</li>
-        ))}
-      </ul>
-      <h2>Mirror 2</h2>
-      <p>Quality: {animeEpisode.mirror2.quality}</p>
-      <ul>
-        {animeEpisode.mirror2.mirrorList.map((mirror, index) => (
-          <li key={index}>{mirror}</li>
-        ))}
-      </ul>
-      <h2>Mirror 3</h2>
-      <p>Quality: {animeEpisode.mirror3.quality}</p>
-      <ul>
-        {animeEpisode.mirror3.mirrorList.map((mirror, index) => (
-          <li key={index}>{mirror}</li>
-        ))}
-      </ul> */}
+      <Navbar />
+        <div className="p-5 text-center">
+          <h1> {episodeData.title}</h1>
+         
+        </div>
+      
+      {/* Tampilkan informasi lainnya tentang episode di sini */}
+     
     </div>
-  </>
   );
 };
 

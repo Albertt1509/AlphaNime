@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useParams } from 'react-router-dom';
 import Navbar from '../components/Navbar/Navbar';
+import { Link } from 'react-router-dom';
 
 const AnimeDetail = () => {
   const [animeDetail, setAnimeDetail] = useState({});
@@ -29,7 +30,9 @@ const AnimeDetail = () => {
           alt={animeDetail.anime_detail ? animeDetail.anime_detail.title : ''}
         />
         <div className="col-span-1 flex flex-col justify-center space-y-2">
-          <h2 className="font-bold text-2xl">{animeDetail.anime_detail ? animeDetail.anime_detail.title : 'N/A'}</h2>
+          <h2 className="font-bold text-2xl">
+             {animeDetail.anime_detail ? animeDetail.anime_detail.title : 'N/A'}</h2>
+
           {/* Menampilkan data anime_detail */}
           {animeDetail.anime_detail && (
             animeDetail.anime_detail.detail.map((item, index) => (
@@ -38,25 +41,29 @@ const AnimeDetail = () => {
           )}
         </div>
       </div>
+        {/* bagian episode*/}
+        <div className="p-8 text-center">
+        <h2 className="font-bold text-2xl">Episode List</h2>
+        <table className="table-auto mx-auto">
+          <tbody className='bg-blue-200'>
+            {animeDetail.episode_list &&
+              animeDetail.episode_list.map((episode, index) => (
+                <tr key={index}>
+                  <td className="border px-4 py-4">
+             <Link to={`/episode/${episode.episode_endpoint}`}>
+                    <a href={episode.episode_endpoint}>
+                      {episode.episode_title}
+                      {episode.episode_date}
+                    </a>
+                </Link>
 
-  <div className="p-8 text-center">
-  <h2 className="font-bold text-2xl">Episode List</h2>
-  <table className="table-auto mx-auto">
-    <tbody className='bg-blue-200'>
-      {animeDetail.episode_list &&
-        animeDetail.episode_list.map((episode, index) => (
-          <tr key={index}>
-            <td className="border px-4 py-4">
-              <a href={`/episode/${episode.episode_endpoint}`}>
-                {episode.episode_title}
-              </a>
-            </td>
-            <td className="border px-4 py-2">{episode.episode_date}</td>
-          </tr>
-        ))}
-    </tbody>
-  </table>
-</div>
+                    
+                  </td>
+                </tr>
+              ))}
+          </tbody>
+        </table>
+      </div>
 
     </div>
   );

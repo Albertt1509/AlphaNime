@@ -1,36 +1,31 @@
-import React, { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom'; // Import useParams
+// Episode.jsx (Komponen untuk menampilkan data episode)
+import { useState, useEffect } from 'react';
+import { useParams } from 'react-router-dom'; // Menggunakan useParams dari React Router
 import axios from 'axios';
-import Navbar from '../components/Navbar/Navbar';
 
-const JadwalRilis = () => {
-  const [animeEpisode, setAnimeEpisode] = useState({});
-  const { endpoint } = useParams(); // Gunakan useParams untuk mengambil nilai endpoint dari URL
+const Episode = () => {
+  const { episode_endpoint } = useParams(); // Menggunakan useParams untuk mengambil episode_endpoint
+  const [episodeData, setEpisodeData] = useState({});
 
   useEffect(() => {
-    retrieveEpisode(); // Ganti retriveEpisode menjadi retrieveEpisode
-  }, [endpoint]);
+    // Ambil data episode berdasarkan episode_endpoint
+    axios.get(`https://otakudesu-anime-api.vercel.app/api/v1/episode/${episode_endpoint}`)
+      .then((response) => {
+        const episodeInfo = response.data;
+        setEpisodeData(episodeInfo);
+        console.log(response.data)
+      })
+      .catch((error) => {
+        console.error('Error:', error);
+      });
+  }, [episode_endpoint]);
 
-  const retrieveEpisode = async () => {
-    try {
-      const { data } = await axios.get(`https://otakudesu-anime-api.vercel.app/api/v1/episode/${endpoint}`);
-      setAnimeEpisode(data);
-      console.log(data);
-    } catch (error) {
-      // Lihat data error di console
-      console.log(`${error} ====> error list`);
-    }
-  };
-
-return (
-     <div>
-      <h1>Data API Jadwal Rilis</h1>
-      <p>Title: {animeEpisode.title}</p>
-      <p>Base URL: {animeEpisode.baseUrl}</p>
-      <p>ID: {animeEpisode.id}</p>
-      {/* Tambahkan properti lain yang ingin Anda tampilkan di sini */}
+  return (
+    <div>
+      {/* Tampilkan data episode di sini sesuai dengan tampilan yang Anda inginkan */}
+      
     </div>
   );
 };
 
-export default JadwalRilis;
+export default Episode;

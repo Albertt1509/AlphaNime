@@ -2,6 +2,8 @@ import { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useParams } from 'react-router-dom';
 import Navbar from '../components/Navbar/Navbar';
+import { Link } from 'react-router-dom';
+
 const Cari = () => {
   const { query } = useParams(); // Dapatkan query pencarian dari URL
 
@@ -31,11 +33,15 @@ return (
       <div className="grid grid-cols-3 gap-4 p-5">
         {searchResults.map((anime) => (
           <div key={anime.id} className="border border-black rounded p-4 h-48 flex">
+             
             <img src={anime.thumb} alt={anime.title} />
+         
             <div className="flex flex-col ml-4">
               {/* Tambahkan info lain ya*/}
               <h2 className="font-bold text-sm md:text-base h-16 overflow-hidden">
+                  <Link to={`/alpha/${anime.endpoint}`}>
                 {anime.title}
+                  </Link>
               </h2>
               <div className="p-5">
                <p>Genre:{anime.genres.join(', ')}</p>

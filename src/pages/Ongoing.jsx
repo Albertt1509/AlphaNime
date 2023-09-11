@@ -47,7 +47,7 @@ const Ongoing = () => {
                 className="border p-4 border-black rounded"
               >
                 <div className="relative h-64">
-                  <Link to={`/detail/${anime.endpoint}`}>
+                  <Link to={`/alpha/${anime.endpoint}`}>
                   <img
                     src={anime.thumb}
                     alt={anime.title}

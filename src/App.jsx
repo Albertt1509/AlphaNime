@@ -7,6 +7,8 @@ import Ongoing from './pages/Ongoing'
 import Genres from './pages/Genres';
 import Cari from './pages/Cari';
 import AnimeDetail from './pages/AnimeDetail';
+import Episode from './pages/Episode';
+
 import './App.css'
 function App() {
 
@@ -20,7 +22,8 @@ function App() {
         <Route path='/ongoing' element={<Ongoing/>} />
         <Route path='/genres' element={<Genres/>} />
         <Route path='/search/:query' element={<Cari/>} />
-        <Route path='/detail/:endpoint' element={<AnimeDetail/>} />
+        <Route path='/alpha/:endpoint' element={<AnimeDetail/>} />
+        <Route path='/episode/:episode_endpoint' element={<Episode/>} />
       </Routes>
     </Router>
     </>
