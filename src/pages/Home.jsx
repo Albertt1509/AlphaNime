@@ -1,7 +1,6 @@
 import { useState, useEffect } from 'react';
 import Navbar from '../components/Navbar/Navbar';
-import { render } from 'react-dom';
-
+import axios from 'axios';
 const Home = () => {
   return (
     <>
@@ -22,9 +21,9 @@ const Home = () => {
       </div>
 
         <div className="container flex justify-start p-5">
-          <h1 className='font-bold text-xl '> Update Anime</h1>
+          <h1 className='font-bold text-xl '>All Anime Complete</h1>
           {/* ongoing anime */}
-            
+         
         </div>
 
     </>

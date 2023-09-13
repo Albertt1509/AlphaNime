@@ -16,7 +16,7 @@ const Episode = () => {
       .then((response) => {
         const episodeInfo = response.data;
         setEpisodeData(episodeInfo);
-        //console.log(response.data)
+        console.log(response.data)
         setLoading(false)
       })
       .catch((error) => {

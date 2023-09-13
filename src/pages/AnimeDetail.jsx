@@ -41,6 +41,7 @@ const AnimeDetail = () => {
           )}
         </div>
       </div>
+      
         {/* bagian episode*/}
         <div className="p-8 text-center">
         <h2 className="font-bold text-2xl">Episode List</h2>
@@ -50,7 +51,7 @@ const AnimeDetail = () => {
               animeDetail.episode_list.map((episode, index) => (
                 <tr key={index}>
                   <td className="border px-4 py-4">
-             <Link to={`/episode/${episode.episode_endpoint}`}>
+             <Link to={`/episode/${episode.episode_endpoint.replace('https:/otakudesu.wiki/episode/', '')}`}>
                     <a href={episode.episode_endpoint}>
                       {episode.episode_title}
                       {episode.episode_date}

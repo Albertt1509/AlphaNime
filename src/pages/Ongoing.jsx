@@ -30,7 +30,6 @@ const Ongoing = () => {
     <div>
       <Navbar />
       <div className="mx-auto ">
-        <img src="../../" alt="" />
         <h2 className="text-2xl font-bold mb-4 pl-3">On Going Anime</h2>
               <button className="m-3 pr-3 pl-3 rounded-full bg-blue-400 text-white"
             onClick={() => changePage(currentPage - 1)}>Previous
@@ -47,7 +46,7 @@ const Ongoing = () => {
                 className="border p-4 border-black rounded"
               >
                 <div className="relative h-64">
-                  <Link to={`/alpha/${anime.endpoint}`}>
+         <Link to={`/alpha/${anime.endpoint.replace('https:/otakudesu.wiki/anime/', '')}`}>
                   <img
                     src={anime.thumb}
                     alt={anime.title}
