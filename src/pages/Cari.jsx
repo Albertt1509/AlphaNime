@@ -39,7 +39,7 @@ return (
             <div className="flex flex-col ml-4">
               {/* Tambahkan info lain ya*/}
               <h2 className="font-bold text-sm md:text-base h-16 overflow-hidden">
-                  <Link to={`/alpha/${anime.endpoint}`}>
+                <Link to={`/alpha/${anime.endpoint.replace('https:/otakudesu.wiki/anime/', '')}`}>
                 {anime.title}
                   </Link>
               </h2>

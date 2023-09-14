@@ -32,7 +32,7 @@ const AnimeList = () => {
                 key={anime.endpoint}
                 className="border p-4 border-black rounded"
               >
-                <Link to={`/alpha/${anime.endpoint}`}>
+               <Link to={`/alpha/${anime.endpoint.replace('https:/otakudesu.wiki/anime/', '')}`}>
                 <h2 className="text-xl font-semibold mt-2">{anime.title}</h2>
                 </Link>
               </div>

@@ -38,9 +38,6 @@ const Navbar = () => {
               <Link to="/anime-list" className="py-7 px-3 inline-block">Anime List</Link>
             </li>
             <li>
-              <Link to="/jadwal-rilis" className="py-7 px-3 inline-block">Jadwal Rilis</Link>
-            </li>
-            <li>
               <Link to="/ongoing" className="py-7 px-3 inline-block">On Going Anime</Link>
             </li>
             <li>
@@ -58,9 +55,6 @@ const Navbar = () => {
                 </li>
                 <li>
                   <Link to="/anime-list" className="px-2 py-2">Anime List</Link>
-                </li>
-                <li>
-                  <Link to="/jadwal-rilis" className="px-2 py-2">Jadwal Rilis(bug)</Link>
                 </li>
                 <li>
                   <Link to="/genres" className="px-2 py-2">Genre</Link>
