@@ -30,10 +30,10 @@ const AnimeList = () => {
             animeListData.map((anime) => (
               <div
                 key={anime.endpoint}
-                className="border p-4 border-black rounded"
+                className="border p-4 "
               >
-               <Link to={`/alpha/${anime.endpoint.replace('https:/otakudesu.wiki/anime/', '')}`}>
-                <h2 className="text-xl font-semibold mt-2">{anime.title}</h2>
+                <Link to={`/alpha/${anime.endpoint.replace('https:/otakudesu.wiki/anime/', '')}`}>
+                  <h2 className="text-xl font-semibold mt-2">{anime.title}</h2>
                 </Link>
               </div>
             ))

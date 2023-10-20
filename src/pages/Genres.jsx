@@ -31,7 +31,7 @@ const Genres = () => {
             <p>Loading...</p>
           ) : (
             genres.map((genre, index) => (
-              <button key={index} className="border border-black p-4 text-center">
+              <button key={index} className="border bg-white rounded shadow-sm p-4 text-center">
                 {genre.genre}
               </button>
             ))
