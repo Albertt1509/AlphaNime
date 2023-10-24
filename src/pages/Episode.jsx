@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import Navbar from '../components/Navbar/Navbar';
@@ -48,32 +48,25 @@ const Episode = () => {
             allowFullScreen="allowFullScreen"
           ></iframe>
           <div className="px-6 py-4">
-            <div className="font-bold text-xl mb-2">{episodeData.title}</div>
+            <div className="font-bold text-xl mb-2 flex ">{episodeData.title}</div>
             <div>
-              <label htmlFor="episodeDropdown">Select Episode:</label>
-              <select
-                id="episodeDropdown"
-                className="w-full bg-white border border-gray-300 rounded-md px-3 py-2 mt-2"
-              >
-                {episodeData.list_episode ? (
-                  episodeData.list_episode.map((episode, index) => (
-                    <option
-                      key={index}
-                      value={episode.list_episode_endpoint}
-                    >
-                      {episode.list_episode_title}
-                    </option>
-                  ))
-                ) : (
-                  <option>No episodes available.</option>
-                )}
-              </select>
+              <p>Total Episodes: {episodeData.list_episode.length}</p>
+              <div className="max-h-44 overflow-y-auto">
+                {episodeData.list_episode.map((episode, index) => (
+                  <a
+                    key={index}
+                    href={`/${episode.list_episode_endpoint.replace('https:/otakudesu.wiki/', '')}`}
+                    className="text-blue-500 hover:underline gap-2 flex flex-grow mx-auto items-center justify-center"
+                  >
+                    Episode {episode.list_episode_title}
+                  </a>
+                ))}
+              </div>
             </div>
           </div>
           {/* Tambahkan tautan unduhan sebagai dropdown */}
           {episodeData.quality && (
             <div className="px-6 pt-4 pb-2 flex items-center">
-
               <label htmlFor="downloadDropdown" className=""></label>
               <select
                 id="downloadDropdown"

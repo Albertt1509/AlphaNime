@@ -17,18 +17,18 @@ const Navbar = () => {
     <div>
       <nav className="bg-white shadow-md relative">
         <div className="flex items-center justify-between font-medium p-4">
-             <div className="md:hidden">
-              <div className={`text-gray-600 hover:text-gray-800 ${menuOpen ? 'menu-enter-active menu-enter-to' : 'menu-leave-active menu-leave-to'}`}
-                onClick={() => setMenuOpen(!menuOpen)}>
-                <AiOutlineMenu />
-              </div>
+          <div className="md:hidden">
+            <div className={`text-gray-600 hover:text-gray-800 ${menuOpen ? 'menu-enter-active menu-enter-to' : 'menu-leave-active menu-leave-to'}`}
+              onClick={() => setMenuOpen(!menuOpen)}>
+              <AiOutlineMenu />
+            </div>
           </div>
           <div className="flex items-center gap-2">
             <img className='logo' src={Logo} alt="" />
           </div>
           {/* Menu Mobile */}
           <ul className={`md:hidden bg-white fixed w-full top-0 overflow-y-auto bottom-0 py-24 pl-4 duration-500 z-50 ${menuOpen ? "translate-x-[-1rem]" : "-translate-x-full"}`} style={{ marginLeft: menuOpen ? '0' : '-100%' }}>
-            
+
             <img className='logo' src={Logo} alt="" />
 
             <li>
@@ -65,10 +65,10 @@ const Navbar = () => {
           <ul className="md:flex items-center gap-2">
             <li>
               <div className="relative">
-                <input type="text" placeholder="Cari anime..."className="border rounded-full py-2 px-4 pr-12 w-full focus:outline-none focus:border-blue-500" value={searchKeyword} onChange={(e) => setSearchKeyword(e.target.value)}/>
+                <input type="text" placeholder="Cari anime..." className="border rounded-lg py-2 px-4 pr-12 w-full focus:outline-none focus:border-blue-500" value={searchKeyword} onChange={(e) => setSearchKeyword(e.target.value)} />
                 <Link
                   to={`/search/${searchKeyword}`}
-                  className="absolute right-4 top-2/4 transform -translate-y-1/2 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full"
+                  className="absolute right-4 top-2/4 transform -translate-y-1/2 bg-purple-500 hover:bg-blue-700 text-white font-bold py-2.5 px-4 rounded-sm"
                   style={{ right: '0' }}
                   onClick={handleSearch}
                 >Cari

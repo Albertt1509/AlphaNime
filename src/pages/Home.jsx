@@ -59,9 +59,9 @@ const Home = () => {
         onClick={() => changePage(currentPage + 1)}>Next Page
       </button>
       <div className="container flex justify-start p-5">
-        <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-4">
+        <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-4 mx-auto">
           {animeComplete.map((anime, index) => (
-            <div key={index} className="bg-white p-4 shadow-lg rounded-lg">
+            <div key={index} className=" bg-white p-4 shadow-lg rounded-lg felx justify-center">
               <img src={anime.thumb} alt={anime.title} className="w-full h-40 object-cover rounded-md" />
               <Link to={`/alpha/${anime.endpoint.replace('https:/otakudesu.wiki/anime/', '')}`}>
                 <h1 className="text-sm font-semibold mt-2 bg-purple-500 p-2 text-white">{anime.title}</h1>
